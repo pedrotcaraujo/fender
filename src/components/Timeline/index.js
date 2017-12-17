@@ -1,9 +1,83 @@
 import React, { Component } from 'react';
+import './style.css';
+
+import RiffStationStore from '../../stores/RiffStationStore';
+import ChordStrip from '../Chords/ChordStrip';
+
+const PIXEL_PER_SECOND = 30;
 
 class Timeline extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            current: 'UNSTARTED',
+            time: 0
+        }
+    }
+    componentDidMount() {
+        // shared playerstate
+        RiffStationStore.addPlayerListener(this.syncState.bind(this))
+
+        this.setupStyle = {
+            width: this.props.duration * PIXEL_PER_SECOND + 'px'
+        };
+    }
+
+    componentWillUnmount() {
+        window.cancelAnimationFrame(this.rframe)
+        RiffStationStore.removePlayerListener(this.syncState)
+    }
+
+    handleStripClick(event, time) {
+        this.state.player.seekTo(time, true);
+    }
+
+    syncState() {
+        this.setState(RiffStationStore.getPlayerState())
+        this.startAnimation();
+    }
+
+    startAnimation() {
+        if (!this.rframe) {
+            this.rframe = window.requestAnimationFrame(this.animate.bind(this))
+        }
+    }
+
+    animate() {   
+        this.state.player.getCurrentTime().then(time => {
+            this.setState(Object.assign({}, this.state, { time }))
+            this.rframe = window.requestAnimationFrame(this.animate.bind(this))
+        })
+    }
+
+    styleByState() {
+        return Object.assign({}, this.setupStyle, {
+            transform: `translateX(-${this.state.time * PIXEL_PER_SECOND}px)`
+        })
+    }
+
+    refContainer(container) {
+        this.container = container;
+    }
+
     render() {
         return (
-            <div>Timeline</div>
+            <div className="Timeline">
+                <span className="Timeline-pointer"/>
+                <div ref={container => this.refContainer(container)} className="Timeline-wrapper" style={this.styleByState()}>
+                    {this.props.songEvents.map(({name, duration, beat_time}, index) => (
+                        <ChordStrip 
+                            key={index} 
+                            name={name} 
+                            size={duration * PIXEL_PER_SECOND} 
+                            events={{
+                                onClick: event => this.handleStripClick(event, beat_time)
+                            }}
+                            />
+                        )
+                    )}
+                </div>
+            </div>
         )
     }
 }

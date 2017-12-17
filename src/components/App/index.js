@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
-import Player from '../Player';
-import Timeline from '../Timeline';
+import RiffStation from '../RiffStation';
 
 class App extends Component {
   render() {
@@ -10,9 +9,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Fender RiffStation Challange</h1>
         </header>
-        <div className="App-intro">
-          <Player videoId='oKsxPW6i3pM'/>
-          <Timeline/>          
+        <div className="App-intro">    
+          <RiffStation/>
         </div>
       </div>
     );
