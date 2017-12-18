@@ -56,15 +56,11 @@ class Timeline extends Component {
         })
     }
 
-    refContainer(container) {
-        this.container = container;
-    }
-
     render() {
         return (
             <div className="Timeline">
                 <span className="Timeline-pointer"/>
-                <div ref={container => this.refContainer(container)} className="Timeline-wrapper" style={this.styleByState()}>
+                <div className="Timeline-wrapper" style={this.styleByState()}>
                     {this.props.songEvents.map(({name, duration, beat_time}, index) => (
                         <ChordStrip 
                             key={index} 
