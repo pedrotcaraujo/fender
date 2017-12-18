@@ -4,7 +4,7 @@ import './style.css';
 import RiffStationStore from '../../stores/RiffStationStore';
 import ChordStrip from '../Chords/ChordStrip';
 
-const PIXEL_PER_SECOND = 30;
+const PIXEL_PER_SECOND = 70;
 
 class Timeline extends Component {
     constructor(props) {
@@ -32,6 +32,12 @@ class Timeline extends Component {
         this.state.player.seekTo(time, true);
     }
 
+    isCurrentChord(beatTime, duration) {
+        const endTime = beatTime + duration;
+        const currentTime = this.state.time;
+        return (currentTime >= beatTime && currentTime <= endTime)
+    }
+
     syncState() {
         this.setState(RiffStationStore.getPlayerState())
         this.startAnimation();
@@ -51,8 +57,9 @@ class Timeline extends Component {
     }
 
     styleByState() {
+        console.log(this.state.time * PIXEL_PER_SECOND)
         return Object.assign({}, this.setupStyle, {
-            transform: `translateX(-${this.state.time * PIXEL_PER_SECOND}px)`
+            transform: `translateX(-${(this.state.time * PIXEL_PER_SECOND)}px)`
         })
     }
 
@@ -65,7 +72,8 @@ class Timeline extends Component {
                         <ChordStrip 
                             key={index} 
                             name={name} 
-                            size={duration * PIXEL_PER_SECOND} 
+                            size={duration * PIXEL_PER_SECOND}
+                            active={this.isCurrentChord(beat_time, duration)} 
                             events={{
                                 onClick: event => this.handleStripClick(event, beat_time)
                             }}

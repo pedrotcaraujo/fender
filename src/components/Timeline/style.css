@@ -3,16 +3,17 @@
     width: 100%;
     margin: auto;
     overflow: hidden;
-    box-sizing: border-box;
 }
 
 .Timeline-pointer {
     position: absolute;
     left: 50%;
-    border: thin solid yellow;
-    background-color: yellow;
+    border: thin solid #000;
+    background-color: #ffff00;
     z-index: 10;
     height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #000
 }
 
 .Timeline-wrapper {
@@ -22,5 +23,4 @@
     align-items: center;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    box-sizing: border-box
 }

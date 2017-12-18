@@ -14,7 +14,7 @@ class RiffStation extends Component {
         this.state = { song: null };
     }
     componentWillMount() {     
-        this.videoId = queryString.parse(window.location.search).id;
+        this.videoId = queryString.parse(window.location.search).id || 'oKsxPW6i3pM' ;
     }
     componentDidMount() {
         proxyFetch(API_URL, {

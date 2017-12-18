@@ -1,5 +1,38 @@
 .ChordStrip {
-    background-color: green;
-    border: thin solid blue;
-    box-sizing: border-box
+    background: yellow;
+    color: #000;
+
+    font-weight: bold;
+    
+    text-align: center;
+    padding: 10px 15px;
+    margin: 15px 0;
+    
+    cursor: pointer;
+    
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-right: -1px;
+    
+}
+
+.ChordStrip--active {
+    box-shadow: 0 0 40px #ffff00;
+    background:#ffff8e;
+}
+
+.ChordStrip:hover {
+    animation: neon .5s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+    0% {
+        box-shadow: 0 0 15px #ffff00;
+        background: yellow;
+    }
+    100% {
+        box-shadow: 0 0 40px yellow;
+        background:#ffff8e;
+
+    }
 }
