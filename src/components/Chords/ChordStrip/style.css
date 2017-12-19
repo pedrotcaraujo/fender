@@ -11,9 +11,9 @@
     cursor: pointer;
     
     border-radius: 15px;
-    box-sizing: border-box;
-    margin-right: -1px;
+    box-sizing: border-box;  
     
+    display: inline-block;
 }
 
 .ChordStrip--active {

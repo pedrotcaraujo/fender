@@ -57,9 +57,8 @@ class Timeline extends Component {
     }
 
     styleByState() {
-        console.log(this.state.time * PIXEL_PER_SECOND)
         return Object.assign({}, this.setupStyle, {
-            transform: `translateX(-${(this.state.time * PIXEL_PER_SECOND)}px)`
+            transform: `translateX(-${this.state.time * PIXEL_PER_SECOND}px)`
         })
     }
 

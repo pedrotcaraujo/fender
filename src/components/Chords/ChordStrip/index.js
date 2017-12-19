@@ -11,7 +11,7 @@ class ChordStrip extends Component {
 
     render() {
         return (
-            <div className={`ChordStrip ${this.props.active && 'ChordStrip--active'}`} {...this.props.events} style={this.setupStyle}>{this.props.name}</div>
+            <div className={`ChordStrip ${this.props.active ? 'ChordStrip--active' : ''}`} {...this.props.events} style={this.setupStyle}>{this.props.name}</div>
         )
     }
 }

@@ -32,7 +32,8 @@ class RiffStation extends Component {
     }
 
     handleRequestError(err) {
-        throw new Error('You received an error on requesting api', err);
+        const {song} = require('../../data');
+        this.setState({ song })
     }
 
     render() {

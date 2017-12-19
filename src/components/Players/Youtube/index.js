@@ -4,7 +4,10 @@ import RiffStationDispatcher from '../../../dispatchers/RiffStationDispatcher';
 
 class Youtube extends Component {
     componentDidMount() {
-        this.player = youtubePlayer(this.container);
+        this.player = youtubePlayer(this.container, {
+            width: 1280,
+            height: 750
+        });
         this.player.loadVideoById(this.props.videoId);
         this.player.on('ready', this.onReady.bind(this))
         this.player.on('stateChange', this.onStateChange.bind(this))
@@ -42,7 +45,7 @@ class Youtube extends Component {
 
         if (data === 3) 
             return 'BUFFERING';
-            
+
         if (data === 5) 
             return 'CUE';
     }
@@ -53,7 +56,7 @@ class Youtube extends Component {
 
     render() {
         return (
-            <div ref={(container) => this.refContainer(container)}/>
+            <div className='Youtube' ref={(container) => this.refContainer(container)}/>
         )
     }
 }
