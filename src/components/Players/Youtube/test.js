@@ -22,7 +22,7 @@ it('renders without crashing', () => {
 });
 
 it('should call youtubePlayer', () => {
-  expect(youtubePlayerMock).toHaveBeenCalledWith(wrapper.instance().container)
+  expect(youtubePlayerMock).toHaveBeenCalledWith(wrapper.instance().container, {"height": 750, "width": 1280})
 });
 
 it('should call loadVideoById method from player', () => {
