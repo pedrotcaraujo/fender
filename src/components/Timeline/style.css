@@ -19,5 +19,6 @@
 .Timeline-wrapper {
     position: relative;
     left: 50%;
+    text-align: left;
     white-space: nowrap;
 }
