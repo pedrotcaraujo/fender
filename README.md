@@ -1,6 +1,6 @@
 # Fender
 
-Riffstation client built with React and Flux. Try the [live demo](https://pedrotcaraujo.github.io/fender/?id=oKsxPW6i3pM).
+Riffstation client built with React and Flux. Try the [live demo](https://pedrotcaraujo.github.io/fender/?videoId=oKsxPW6i3pM).
 
 # Stack:
   - React
@@ -75,7 +75,7 @@ You can now deploy the contents of the `build` directory to production!
 npm run deploy
 ```
 
-You can now see application in production: [(https://pedrotcaraujo.github.io/fender/?id=oKsxPW6i3pM)](https://pedrotcaraujo.github.io/fender/?id=oKsxPW6i3pM)  !
+You can now see application in production: [(https://pedrotcaraujo.github.io/fender/?videoId=oKsxPW6i3pM)](https://pedrotcaraujo.github.io/fender/?videoId=oKsxPW6i3pM)  !
 
 ## by
 

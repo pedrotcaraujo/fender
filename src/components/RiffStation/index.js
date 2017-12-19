@@ -14,7 +14,7 @@ class RiffStation extends Component {
         this.state = { song: null };
     }
     componentWillMount() {     
-        this.videoId = queryString.parse(window.location.search).id || 'oKsxPW6i3pM' ;
+        this.videoId = queryString.parse(window.location.search).videoId || 'oKsxPW6i3pM' ;
     }
     componentDidMount() {
         proxyFetch(API_URL, {
@@ -32,8 +32,9 @@ class RiffStation extends Component {
     }
 
     handleRequestError(err) {
-        const {song} = require('../../data');
+        const { song } = require('../../data').default;
         this.setState({ song })
+        console.info('loading fallback data', song);
     }
 
     render() {
